@@ -1,0 +1,50 @@
+@startuml
+
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include FONTAWESOME/users.puml
+!include <logos/kafka>
+
+AddElementTag("doc", $shape=EightSidedShape(), $bgColor="CornflowerBlue", $fontColor="white")
+
+Person(users, "Пользователи", "", $sprite="users")
+
+System_Boundary(sys_regl, "Система регл. бухгалтерского учета") {
+    Container(doc1, "Документ A", "", "Первичный документ", $tags = "doc")
+    Container(doc2, "Документ B", "", "Первичный документ", $tags = "doc")
+    Container(docN, "Документ C", "", "Первичный документ", $tags = "doc")
+    Container(operation, "Операция к отражению в упр. учете", "", "Документ-абстракция", $tags = "doc")
+    ContainerQueue(que, "Очередь сообщений", "Регистр сведений")
+    Container(ser, "Сериализатор", "Enterprise Data", "Регламентное задание")
+    Container(producer, "Kafka Producer", "Native API", "Внешняя компонента")
+}
+
+System_Boundary(linux, "Ubuntu") {
+    queue "<$kafka>" as kafka
+}
+
+System_Boundary(sys_upr, "Система упр. финансового учета") {
+    Container(consumer, "Kafka Consumer", "Native API", "Внешняя компонента")
+    Container(msg, "Входящие сообщения", "Справочник")
+    Container(deser, "Десериализатор", "Enterprise Data", "Регламентное задание")
+    Container(oper_buh, "Операция", "Документ", "Проводки регл. учета", $tags = "doc")
+    Container(upr, "Факт БДР и БДДС", "Регистр накопления")
+}
+
+Rel(doc1, operation, "Запись")
+Rel(doc2, operation, "Запись")
+Rel(docN, operation, "Запись")
+Rel(operation, que, "Регистрация")
+Rel(ser, que, "Обработка")
+Rel(users, doc1, "Создание")
+Rel(users, doc2, "Создание")
+Rel(users, docN, "Создание")
+Rel_R(que, producer, "Пул сообщений")
+Rel(producer, kafka, "Отправка сообщений", "TCP/IP")
+BiRel(consumer, kafka, "Запрос/получение сообщений", "TCP/IP")
+Rel(consumer, msg, "Сообщения")
+Rel(deser, msg, "Обработка")
+Rel_R(msg, oper_buh, "Создание объектов")
+Rel(oper_buh, upr, "Отражение в упр. учете", "Механизм трансляции")
+
+@enduml
