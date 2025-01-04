@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.18">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<ChildItems>
+		<LabelField name="Объект" id="19">
+			<DataPath>Объект.Объект</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<Hiperlink>true</Hiperlink>
+			<ContextMenu name="ОбъектКонтекстноеМеню" id="20"/>
+			<ExtendedTooltip name="ОбъектРасширеннаяПодсказка" id="21"/>
+		</LabelField>
+		<LabelField name="Код" id="1">
+			<DataPath>Объект.Code</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="КодРасширеннаяПодсказка" id="3"/>
+		</LabelField>
+		<LabelField name="Топик" id="4">
+			<DataPath>Объект.Топик</DataPath>
+			<HorizontalAlign>Left</HorizontalAlign>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="ТопикКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="ТопикРасширеннаяПодсказка" id="6"/>
+		</LabelField>
+		<LabelField name="Партиция" id="7">
+			<DataPath>Объект.Партиция</DataPath>
+			<HorizontalAlign>Left</HorizontalAlign>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="ПартицияКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ПартицияРасширеннаяПодсказка" id="9"/>
+		</LabelField>
+		<LabelField name="Смещение" id="10">
+			<DataPath>Объект.Смещение</DataPath>
+			<HorizontalAlign>Left</HorizontalAlign>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="СмещениеКонтекстноеМеню" id="11"/>
+			<ExtendedTooltip name="СмещениеРасширеннаяПодсказка" id="12"/>
+		</LabelField>
+		<InputField name="Сообщение" id="13">
+			<DataPath>Объект.Сообщение</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<Height>6</Height>
+			<AutoMaxHeight>false</AutoMaxHeight>
+			<MultiLine>true</MultiLine>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="СообщениеКонтекстноеМеню" id="14"/>
+			<ExtendedTooltip name="СообщениеРасширеннаяПодсказка" id="15"/>
+		</InputField>
+		<UsualGroup name="Группа1" id="28">
+			<Group>AlwaysHorizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="29"/>
+			<ChildItems>
+				<InputField name="ДатаПолучения" id="16">
+					<DataPath>Объект.ДатаПолучения</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>13</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<AutoMaxHeight>false</AutoMaxHeight>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ДатаПолученияКонтекстноеМеню" id="17"/>
+					<ExtendedTooltip name="ДатаПолученияРасширеннаяПодсказка" id="18"/>
+				</InputField>
+				<InputField name="ПопытокОбработки" id="25">
+					<DataPath>Объект.ПопытокОбработки</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Width>3</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<AutoMaxHeight>false</AutoMaxHeight>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ПопытокОбработкиКонтекстноеМеню" id="26"/>
+					<ExtendedTooltip name="ПопытокОбработкиРасширеннаяПодсказка" id="27"/>
+				</InputField>
+				<InputField name="ДатаСледующейОбработки" id="30">
+					<DataPath>Объект.ДатаСледующейОбработки</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Width>13</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<AutoMaxHeight>false</AutoMaxHeight>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ДатаСледующейОбработкиКонтекстноеМеню" id="31"/>
+					<ExtendedTooltip name="ДатаСледующейОбработкиРасширеннаяПодсказка" id="32"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="ОшибкиОбработки" id="22">
+			<DataPath>Объект.ОшибкиОбработки</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<Height>3</Height>
+			<AutoMaxHeight>false</AutoMaxHeight>
+			<MultiLine>true</MultiLine>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="ОшибкиОбработкиКонтекстноеМеню" id="23"/>
+			<ExtendedTooltip name="ОшибкиОбработкиРасширеннаяПодсказка" id="24"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.uu_ВходящиеСообщения</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+</Form>

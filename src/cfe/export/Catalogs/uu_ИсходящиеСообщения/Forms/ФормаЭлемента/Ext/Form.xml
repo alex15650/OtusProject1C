@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.18">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<ChildItems>
+		<UsualGroup name="Группа1" id="16">
+			<Group>AlwaysHorizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="17"/>
+			<ChildItems>
+				<InputField name="Код" id="1">
+					<DataPath>Объект.Code</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>23</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<AutoMaxHeight>false</AutoMaxHeight>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="3"/>
+				</InputField>
+				<InputField name="ДатаОтправки" id="10">
+					<DataPath>Объект.ДатаОтправки</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>13</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<AutoMaxHeight>false</AutoMaxHeight>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ДатаОтправкиКонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="ДатаОтправкиРасширеннаяПодсказка" id="12"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<LabelField name="Объект" id="7">
+			<DataPath>Объект.Объект</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<Hiperlink>true</Hiperlink>
+			<ContextMenu name="ОбъектКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ОбъектРасширеннаяПодсказка" id="9"/>
+		</LabelField>
+		<LabelField name="Топик" id="4">
+			<DataPath>Объект.Топик</DataPath>
+			<HorizontalAlign>Left</HorizontalAlign>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ContextMenu name="ТопикКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="ТопикРасширеннаяПодсказка" id="6"/>
+		</LabelField>
+		<LabelField name="Партиция" id="18">
+			<DataPath>Объект.Партиция</DataPath>
+			<HorizontalAlign>Left</HorizontalAlign>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ContextMenu name="ПартицияКонтекстноеМеню" id="19"/>
+			<ExtendedTooltip name="ПартицияРасширеннаяПодсказка" id="20"/>
+		</LabelField>
+		<LabelField name="Смещение" id="21">
+			<DataPath>Объект.Смещение</DataPath>
+			<HorizontalAlign>Left</HorizontalAlign>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<ContextMenu name="СмещениеКонтекстноеМеню" id="22"/>
+			<ExtendedTooltip name="СмещениеРасширеннаяПодсказка" id="23"/>
+		</LabelField>
+		<InputField name="ТекстСообщения" id="13">
+			<DataPath>Объект.ТекстСообщения</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<Height>6</Height>
+			<AutoMaxHeight>false</AutoMaxHeight>
+			<MultiLine>true</MultiLine>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="ТекстСообщенияКонтекстноеМеню" id="14"/>
+			<ExtendedTooltip name="ТекстСообщенияРасширеннаяПодсказка" id="15"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.uu_ИсходящиеСообщения</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+</Form>

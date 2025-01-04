@@ -1,0 +1,6 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://www.1c.ru/SSL/Exchange/Message">
+	<valueType name="Ref" base="xs:string" variety="Atomic"/>
+	<objectType name="Object" open="false" abstract="true">
+		<property name="AdditionalInfo" type="xs:anyType" lowerBound="0"/>
+	</objectType>
+</package>

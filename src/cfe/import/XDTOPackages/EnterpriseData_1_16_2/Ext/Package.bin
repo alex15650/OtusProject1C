@@ -1,0 +1,37 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.16">
+	<import namespace="http://www.1c.ru/SSL/Exchange/Message"/>
+	<valueType xmlns:d2p1="http://www.1c.ru/SSL/Exchange/Message" name="СправочникСсылка.Организации" base="d2p1:Ref"/>
+	<valueType xmlns:d2p1="http://www.1c.ru/SSL/Exchange/Message" name="СправочникСсылка.СтраныМира" base="d2p1:Ref"/>
+	<valueType name="ТипСумма" base="xs:decimal" totalDigits="15" fractionDigits="2"/>
+	<valueType name="ТипGLN" base="xs:string" maxLength="13"/>
+	<valueType name="ЮридическоеФизическоеЛицо" base="xs:string" variety="Atomic">
+		<enumeration>ЮридическоеЛицо</enumeration>
+		<enumeration>ФизическоеЛицо</enumeration>
+	</valueType>
+	<objectType name="КлючевыеСвойстваОрганизация" open="true" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.16" name="Ссылка" type="d3p1:СправочникСсылка.Организации" lowerBound="0"/>
+		<property name="Наименование" type="xs:string"/>
+		<property name="НаименованиеСокращенное" type="xs:string" lowerBound="0"/>
+		<property name="НаименованиеПолное" type="xs:string" lowerBound="0"/>
+		<property name="ИНН" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" maxLength="12"/>
+		</property>
+		<property name="КПП" lowerBound="0">
+			<typeDef xsi:type="ValueType" base="xs:string" maxLength="9"/>
+		</property>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.16" name="ГоловнаяОрганизация" type="d3p1:КлючевыеСвойстваОрганизация" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.16" name="ЮридическоеФизическоеЛицо" type="d3p1:ЮридическоеФизическоеЛицо"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.16" name="GLN" type="d3p1:ТипGLN" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.16" name="СтранаРегистрации" type="d3p1:КлючевыеСвойстваСтранаМира" lowerBound="0"/>
+		<property name="НалоговыйНомерНерезидента" type="xs:string" lowerBound="0"/>
+		<property name="РегистрационныйНомерНерезидента" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType name="КлючевыеСвойстваСтранаМира" open="true" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.16" name="Ссылка" type="d3p1:СправочникСсылка.СтраныМира" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.16" name="ДанныеКлассификатора" type="d3p1:ОбщиеСвойстваДанныеКлассификатора"/>
+	</objectType>
+	<objectType name="ОбщиеСвойстваДанныеКлассификатора" open="true" sequenced="true">
+		<property name="Код" type="xs:string" lowerBound="0"/>
+		<property name="Наименование" type="xs:string" lowerBound="0"/>
+	</objectType>
+</package>

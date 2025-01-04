@@ -1,0 +1,16 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="http://v8.1c.ru/edi/edi_stnd/ED_UU/1.0">
+	<import namespace="http://www.1c.ru/SSL/Exchange/Message"/>
+	<import namespace="http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.16"/>
+	<valueType xmlns:d2p1="http://www.1c.ru/SSL/Exchange/Message" name="ДокументСсылка.ОперацияБух" base="d2p1:Ref"/>
+	<objectType name="КлючевыеСвойстваОперацияБух" open="true" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/ED_UU/1.0" name="Ссылка" type="d3p1:ДокументСсылка.ОперацияБух" lowerBound="0"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.16" name="Организация" type="d3p1:КлючевыеСвойстваОрганизация" lowerBound="1"/>
+		<property name="Дата" type="xs:dateTime"/>
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/EnterpriseData/1.16" name="СуммаОперации" type="d3p1:ТипСумма" lowerBound="0"/>
+		<property name="Содержание" type="xs:string" lowerBound="0"/>
+		<property name="Комментарий" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType xmlns:d2p1="http://www.1c.ru/SSL/Exchange/Message" name="Документ.ОперацияБух" base="d2p1:Object" open="true" sequenced="true">
+		<property xmlns:d3p1="http://v8.1c.ru/edi/edi_stnd/ED_UU/1.0" name="КлючевыеСвойства" type="d3p1:КлючевыеСвойстваОперацияБух"/>
+	</objectType>
+</package>
