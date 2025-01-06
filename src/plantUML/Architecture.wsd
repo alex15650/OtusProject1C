@@ -2,49 +2,48 @@
 
 !define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
 !include FONTAWESOME/users.puml
 !include <logos/kafka>
 
-AddElementTag("doc", $shape=EightSidedShape(), $bgColor="CornflowerBlue", $fontColor="white")
+title Архитектурная схема
 
 Person(users, "Пользователи", "", $sprite="users")
 
-System_Boundary(sys_regl, "Система регл. бухгалтерского учета") {
-    Container(doc1, "Документ A", "", "Первичный документ", $tags = "doc")
-    Container(doc2, "Документ B", "", "Первичный документ", $tags = "doc")
-    Container(docN, "Документ C", "", "Первичный документ", $tags = "doc")
-    Container(operation, "Операция к отражению в упр. учете", "", "Документ-абстракция", $tags = "doc")
-    ContainerQueue(que, "Очередь сообщений", "Регистр сведений")
-    Container(ser, "Сериализатор", "Enterprise Data", "Регламентное задание")
-    Container(producer, "Kafka Producer", "Native API", "Внешняя компонента")
+Container_Boundary(bp_corp, "Система регл. бухгалтерского учета (БП КОРП)") {
+    Component(docA, "Документ A", "", "Первичный документ")
+    Component(docB, "Документ B", "", "Первичный документ")
+    Component(docC, "Документ C", "", "Первичный документ")
+    Component(operation, "Операция к отражению в упр. учете", "", "Документ-абстракция")
+    Component(que, "Очередь сообщений", "Регистр сведений")
+    Component(ser, "Сериализатор", "Enterprise Data", "Формирует XML-сообщение с набором проводок первичного документа")
+    Component(producer, "Kafka Producer", "Native API", "Внешняя компонента")
 }
 
-System_Boundary(linux, "Ubuntu") {
-    queue "<$kafka>" as kafka
+queue "<$kafka>" as kafka
+
+Container_Boundary(finance, "Система упр. финансового учета (БИТ.Финанс)") {
+    Component(consumer, "Kafka Consumer", "Native API", "Внешняя компонента")
+    Component(messages, "Входящие сообщения", "Справочник")
+    Component(deser, "Десериализатор", "Enterprise Data", "Преобразует XML-сообщение в ручную операцию с проводками")
+    Component(oper_buh, "Операция", "Документ", "Проводки регл. учета")
+    Component(accrg, "Обороты по бюджетам", "Регистр накопления")
 }
 
-System_Boundary(sys_upr, "Система упр. финансового учета") {
-    Container(consumer, "Kafka Consumer", "Native API", "Внешняя компонента")
-    Container(msg, "Входящие сообщения", "Справочник")
-    Container(deser, "Десериализатор", "Enterprise Data", "Регламентное задание")
-    Container(oper_buh, "Операция", "Документ", "Проводки регл. учета", $tags = "doc")
-    Container(upr, "Факт БДР и БДДС", "Регистр накопления")
-}
-
-Rel(doc1, operation, "Запись")
-Rel(doc2, operation, "Запись")
-Rel(docN, operation, "Запись")
-Rel(operation, que, "Регистрация")
-Rel(ser, que, "Обработка")
-Rel(users, doc1, "Создание")
-Rel(users, doc2, "Создание")
-Rel(users, docN, "Создание")
-Rel_R(que, producer, "Пул сообщений")
-Rel(producer, kafka, "Отправка сообщений", "TCP/IP")
-BiRel(consumer, kafka, "Запрос/получение сообщений", "TCP/IP")
-Rel(consumer, msg, "Сообщения")
-Rel(deser, msg, "Обработка")
-Rel_R(msg, oper_buh, "Создание объектов")
-Rel(oper_buh, upr, "Отражение в упр. учете", "Механизм трансляции")
+Rel(docA, operation, "Формирует при записи")
+Rel(docB, operation, "Формирует при записи")
+Rel(docC, operation, "Формирует при записи")
+Rel(operation, que, "Регистрируется при записи")
+Rel(ser, que, "Обрабатывает новые сообщения")
+Rel(users, docA, "Создают")
+Rel(users, docB, "Создают")
+Rel(users, docC, "Создают")
+Rel_R(que, producer, "Предоставляет пул сообщений")
+Rel(producer, kafka, "Отправляет сообщения в топик", "TCP/IP")
+BiRel(consumer, kafka, "Запрашивает и получает сообщения из топика", "TCP/IP")
+Rel(consumer, messages, "Записывает сообщения")
+Rel(deser, messages, "Обрабатывает сообщения")
+Rel_R(messages, oper_buh, "Преобразуются в объекты системы")
+Rel(oper_buh, accrg, "Отражает факт БДР и БДДС", "Механизм трансляции")
 
 @enduml
